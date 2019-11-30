@@ -141,12 +141,14 @@ export default {
   position: absolute;
   top: 5px;
   left: 850px;
+  -webkit-app-region: no-drag;
 }
 
 .minimize {
   position: absolute;
   top: 5px;
   left: 815px;
+  -webkit-app-region: no-drag;
 }
 
 </style>
