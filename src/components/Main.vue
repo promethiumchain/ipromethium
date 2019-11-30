@@ -119,7 +119,10 @@ export default {
   text-align: center;
   color: rgb(0, 0, 0);
   font-size: 14px;
-  -webkit-app-region: drag;
+}
+
+.main {
+   -webkit-app-region: drag;
 }
 
 
