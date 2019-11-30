@@ -69,7 +69,6 @@ export default {
         })
         .catch(err => {
           alert('error getting btc price from api : ' + err)
-          
         })
     },
     setMain () {
@@ -126,6 +125,7 @@ export default {
 
 .menubtn {
     width: 150px;
+    -webkit-app-region: no-drag;
 }
 .date {
     margin-bottom: 10px;

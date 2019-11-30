@@ -19,7 +19,7 @@ protocol.registerSchemesAsPrivileged([{scheme: 'app', privileges: { secure: true
 
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({ width: 900, height: 300, frame: false, title: 'iPromethium', webPreferences: {
+  win = new BrowserWindow({ width: 900, height: 300, resizable:false, frame: false, title: 'iPromethium', webPreferences: {
     nodeIntegration: true
   } })
 
