@@ -17,6 +17,9 @@
       <div class="pcmbtcprice">
           Promethium Cost Per Coin To Make in BTC : {{ this.pcmBtcPrice }} Sats
       </div>
+      <div class="totalcoins">
+        Total Coins in Circulation : {{ this.coinsInCirculation }} PCM
+      </div>
   </div>
 </template>
 
@@ -31,7 +34,9 @@ export default {
       pcmBtcPrice: '',
       pcmHashrate: '',
       pcmDiff: '',
-      isInit: true
+      isInit: true,
+      coinsInCirculation: '',
+      epochReward: '3'
     }
   },
   methods: {
@@ -58,8 +63,17 @@ export default {
           this.pcmHashrate = hashrate.toFixed(3)
           this.pcmDiff = diff
           this.isInit = true
+          var x = this.pcmBlockNumber * this.epochReward
+          this.coinsInCirculation = this.numberWithCommas(x)
         })
         .catch(err => alert('error connecting to the promethium network' + err))
+    },
+    numberWithCommas(x) {
+        x = x.toString();
+        var pattern = /(-?\d+)(\d{3})/;
+        while (pattern.test(x))
+            x = x.replace(pattern, "$1,$2");
+        return x;
     }
   },
   mounted () {
@@ -75,7 +89,7 @@ export default {
 <style>
 
 .crystal {
-  height: 100px;
+  height: 75px;
   width: auto;
   filter: grayscale();
 }
