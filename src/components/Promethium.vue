@@ -30,6 +30,9 @@ export default {
     }
   },
   methods: {
+    pcmInit() {
+      this.getPcmData()
+    },
     getPcmData () {
       var pcm = new Pcm('ws://209.250.240.205:9989')
       pcm.getBlock('latest')
@@ -51,9 +54,6 @@ export default {
         })
         .catch(err => alert('error connecting to the promethium network' + err))
     }
-  },
-  mounted () {
-    this.getPcmData()
   }
 }
 </script>

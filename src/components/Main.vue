@@ -17,7 +17,7 @@
                     <v-btn @click="setNews()" id="news" outlined color="cyan" class="menubtn ma-2">News</v-btn>
                 </v-col>
                 <v-col :cols="9">
-                    <Promethium v-bind:btcPrice="btcPrice" v-if="mainOn" />
+                    <Promethium ref="promethiumComponent" v-bind:btcPrice="btcPrice" v-if="mainOn" />
                     <Coins  v-if="coinsOn" />
                     <Market v-if="marketOn" />
                     <News v-if="newsOn" />
@@ -65,6 +65,7 @@ export default {
           var p = response.data.bpi.USD.rate.replace(',', '')
           var f = parseFloat(p)
           this.btcPrice = f.toFixed(2)
+          this.$refs.promethiumComponent.pcmInit()
         })
         .catch(err => {
           alert('error getting btc price from api : ' + err)
@@ -72,6 +73,7 @@ export default {
         })
     },
     setMain () {
+      this.$refs.promethiumComponent.pcmInit()
       this.mainOn = true
       this.coinsOn = false
       this.marketOn = false
