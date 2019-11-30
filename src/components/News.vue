@@ -2,16 +2,17 @@
   <div class="news">
       <h2>Promethium News</h2>
       <div class="twitter" v-if="twitterOn">
-          <Timeline id="ChainPromethium" sourceType="profile" :options="{ tweetLimit: '5' }"/>
+        <twitter>
+            <div slot="loading">loading .....</div>
+            <a class="twitter-timeline" href="https://twitter.com/ChainPromethium?ref_src=twsrc%5Etfw">Tweets by Promethium Chain Team</a>
+        </twitter>      
       </div>
   </div>
 </template>
 
 <script>
-import { Timeline } from 'vue-tweet-embed'
 export default {
     components: {
-        Timeline
     },
     data () {
         return {

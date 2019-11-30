@@ -72,7 +72,6 @@ export default {
         })
     },
     setMain () {
-      this.$refs.promethiumComponent.pcmInit()
       this.mainOn = true
       this.coinsOn = false
       this.marketOn = false

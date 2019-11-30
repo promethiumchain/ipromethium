@@ -26,11 +26,12 @@ export default {
       pcmPrice: '',
       pcmBtcPrice: '',
       pcmHashrate: '',
-      pcmDiff: ''
+      pcmDiff: '',
+      isInit: true
     }
   },
   methods: {
-    pcmInit() {
+    pcmInit () {
       this.getPcmData()
     },
     getPcmData () {
@@ -51,8 +52,16 @@ export default {
           this.pcmBtcPrice = priceInSatoshies
           this.pcmHashrate = hashrate.toFixed(3)
           this.pcmDiff = diff
+          this.isInit = true
         })
         .catch(err => alert('error connecting to the promethium network' + err))
+    }
+  },
+  mounted () {
+    if(!this.isInit) {
+      return
+    } else {
+      this.getPcmData()
     }
   }
 }
