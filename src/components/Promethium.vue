@@ -2,6 +2,9 @@
   <div class="promethium">
       <h3>Promethium Network Stats</h3>
       <img src="../assets/crystal.png"  class="crystal">
+      <div class="blocknumber">
+        Current Block Number : {{ this.pcmBlockNumber}}
+      </div>
       <div class="hashrate">
           Promethium Global Hashrate : {{ this.pcmHashrate }} MH/s
       </div>
@@ -23,6 +26,7 @@ export default {
   props: ['btcPrice'],
   data () {
     return {
+      pcmBlockNumber: '',
       pcmPrice: '',
       pcmBtcPrice: '',
       pcmHashrate: '',
@@ -38,6 +42,7 @@ export default {
       var pcm = new Pcm('ws://209.250.240.205:9989')
       pcm.getBlock('latest')
         .then(response => {
+          this.pcmBlockNumber = response.number
           var diff = response.difficulty
           var hashrate = (diff / 14) / 1000000
           const coinsPerDay = 7200 * 3
@@ -68,10 +73,6 @@ export default {
 </script>
 
 <style>
-
-h3 {
-    margin-bottom: 20px;
-}
 
 .crystal {
   height: 100px;
